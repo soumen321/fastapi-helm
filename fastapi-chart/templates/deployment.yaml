@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "fastapi-chart.fullname" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+
+  selector:
+    matchLabels:
+      app: fastapi
+
+  template:
+    metadata:
+      labels:
+        app: fastapi
+
+    spec:
+      containers:
+        - name: fastapi
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+
+          ports:
+            - containerPort: 8000
