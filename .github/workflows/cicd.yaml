@@ -35,10 +35,18 @@ jobs:
     - name: Update Helm values.yaml
       run: |
         cd fastapi-helm/fastapi-chart
-        sed -i "s/tag:.*/tag: ${{ github.sha }}/" values.yaml
+        # Increment chart version (patch bump)
+        old_version=$(yq '.version' Chart.yaml)
+        new_version=$(echo $old_version | awk -F. '{print $1"."$2"."$3+1}')
+        yq -i ".version = \"$new_version\"" Chart.yaml
 
-        # Update appVersion
-        sed -i "s/appVersion:.*/appVersion: \"${{ github.sha }}\"/" Chart.yaml
+        # Update appVersion to short SHA
+        short_sha=$(echo "${{ github.sha }}" | cut -c1-7)
+        yq -i ".appVersion = \"$short_sha\"" Chart.yaml
+
+        # Update values.yaml tag
+        yq -i ".image.tag = \"${{ github.sha }}\"" values.yaml
+
 
     - name: Commit and Push Changes
       run: |
