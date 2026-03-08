@@ -1,15 +1,12 @@
 replicaCount: 2
-
 image:
   repository: techsoumen/fastapi-demo
   pullPolicy: IfNotPresent
-  tag: "v2"
-
+  tag: "ae154245ca29944bd472643afa8b5fce482e19df"
 service:
   type: NodePort
   port: 80
   targetPort: 8111
-
 ingress:
   enabled: false
   className: ""
@@ -19,15 +16,12 @@ ingress:
       paths:
         - path: /
           pathType: Prefix
-  tls: []  
-
+  tls: []
 serviceAccount:
   create: true
   automount: true
   annotations: {}
-  name: ""  
-
+  name: ""
 resources: {}
-
 autoscaling:
   enabled: false
