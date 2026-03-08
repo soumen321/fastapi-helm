@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
 
 jobs:
   build-and-push:
@@ -37,6 +36,9 @@ jobs:
       run: |
         cd fastapi-helm/fastapi-chart
         sed -i "s/tag:.*/tag: ${{ github.sha }}/" values.yaml
+
+        # Update appVersion
+        sed -i "s/appVersion:.*/appVersion: \"${{ github.sha }}\"/" Chart.yaml
 
     - name: Commit and Push Changes
       run: |
