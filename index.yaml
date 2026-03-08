@@ -3,12 +3,12 @@ entries:
   fastapi-chart:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-03-08T11:58:43.7780631+05:30"
+    created: "2026-03-08T12:02:22.569489+05:30"
     description: Helm chart for FastAPI application
     digest: 297fb9b15f3feaee260829a5a531f87113214271d7daf1c77d20664123940ea8
     name: fastapi-chart
     type: application
     urls:
-    - fastapi-chart-0.1.0.tgz
+    - charts/fastapi-chart-0.1.0.tgz
     version: 0.1.0
-generated: "2026-03-08T11:58:43.7699949+05:30"
+generated: "2026-03-08T12:02:22.568972+05:30"
