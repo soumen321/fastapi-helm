@@ -323,6 +323,15 @@ fastapi-helm
 └── README.md
 ```
 
+Steps to publish from main
+- Go to your repository on GitHub → Settings → Pages.
+- Under Source, select:
+- Branch: main
+- Folder: / (root) (since your index.yaml is at the repo root).
+- Save the settings. GitHub will build and publish your site.
+- Wait a minute or two, then check:
+
+
 ---
 
 # Future Improvements
